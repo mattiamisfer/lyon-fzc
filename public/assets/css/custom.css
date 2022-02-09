@@ -1,0 +1,38 @@
+.nav>li>a>img {
+width: 60px;
+margin: 10px;
+}
+.navbar-inverse .navbar-nav>li>a {
+	font-size: 19px;
+}
+.smarticker3 {
+	font-size: 16px;
+	line-height: 32px;
+	color: #FFF;
+}
+.container {
+	width: 90vw !important;
+}
+.contact {
+width: 100%;
+border: none ;
+border-bottom: solid 2px GRAY;
+line-height: 34px;
+margin-bottom: 15px;	
+}
+.contacttxt {
+width: 100%;
+border: solid 2px GRAY;
+line-height: 34px;
+margin-bottom: 20px;
+border-radius: 10px;	
+}
+#ssubmit {
+	float: right;
+	border: none;
+	background-color: #fff;
+	
+}
+.dropdown-toggle {
+
+}
