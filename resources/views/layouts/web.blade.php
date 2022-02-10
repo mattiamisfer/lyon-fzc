@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="{{ asset('assets/plugins/owl.carousel.min.html')}}">
 <link rel="stylesheet" href="{{ asset('assets/plugins/jquery.queryloader2.min.html')}}">
 <link href="%7b%25%20static%20%27js/superfish.css%27%20%25%7d" rel="stylesheet">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- REVOLUTION BANNER CSS SETTINGS -->
 <link href="{{ asset('assets/css/settings.css')}}" media="screen" rel="stylesheet">
@@ -146,11 +147,23 @@ Call us now on<br /><strong>+971 58 565 6991</strong>
 
 </div><!--top-contact-area-->    
 </div><!--col-md-4-->
-<div class="col-md-3 no-space">
+{{-- <div class="col-md-3 no-space">
 <div class="top-contact-area text-left srchdiv">
 <input type="text" value="search" id="search"/>
 </div><!--top-contact-area-->    
-</div><!--col-md-4--> 
+</div><!--col-md-4-->  --}}
+
+ <form action="{{ route('search')}}" method="post">
+ <div class="input-group col-md-3">
+   @csrf
+            <input class="form-control py-2" type="search"   name="search" id="example-search-input">
+            <span class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+      </form>
 <div class="col-md-3 no-space">
 <div class="top-contact-area text-left top-right">
 {{-- <img src="{{ asset('assets/img/header/tofrom.png')}}" width="100%"/> --}}

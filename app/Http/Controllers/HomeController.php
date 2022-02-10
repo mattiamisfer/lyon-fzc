@@ -7,6 +7,7 @@ use App\Models\Checkout;
 use App\Models\Homam;
 use App\Models\Offer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -112,5 +113,22 @@ class HomeController extends Controller
         }
     }
 
+
+
+    public function search(Request $request) {
+
+        if(!empty($request->search)) {
+         // DB::enableQueryLog();
+             $offers = Offer::where('title', 'like', '%' .  $request->search. '%')->get();
+             return view('web.search',compact('offers'));
+       // return    $query = DB::getQueryLog();
+ 
+        }
+
+    }
+
+    public function comming(){
+        return view('web.comming-soon');
+    }
     
 }

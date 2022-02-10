@@ -21,11 +21,7 @@
             </div>
             <div class="ms-auto">
                 <div class="btn-group">
-                    <a href="{{ route('admin.offers.create')}}" class="d-flex align-items-center theme-icons shadow-sm p-2 cursor-pointer rounded">
-                        <div class="font-22 text-primary">	<i class="fadeIn animated bx bx-plus"></i>
-                        </div>
-                        <div class="ms-4">{{ $page['title'] }} </div>
-                    </a>
+           
                     {{-- <button type="button" class="btn btn-primary">Settings</button>
                     <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
                     </button>

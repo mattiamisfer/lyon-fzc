@@ -28,6 +28,8 @@
 <link rel="stylesheet" href="{{ asset('assets/plugin/owl-carousel/owl.theme.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/css/style-1.css')}}"/>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

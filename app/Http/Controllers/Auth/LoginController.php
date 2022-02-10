@@ -50,7 +50,7 @@ class LoginController extends Controller
 
     protected function authenticated()
     {
-        $usercheck =  User::with(['subscription'])->find(Auth::user()->id);
+      //  $usercheck =  User::with(['subscription'])->find(Auth::user()->id);
         if(Auth::user()->role_as  ==1) //1 = Admin Login
         {
 
@@ -64,18 +64,9 @@ class LoginController extends Controller
 
           //return  'Welcome misfer';
         }
-        elseif(Auth::user()->role_as  ==2) // Normal or Default User Login
-        {
-            if($usercheck->subscription->count() ==1) {
-                return redirect()->route('dashboard.index')->with('status','Welcome to your dashboard');
-
-             } else {
-                return redirect()->route('package')->with('status','Welcome to your dashboard');
-             }
-          //  return redirect('/')->with('status','Logged in successfully');
-        //  return 'User Dashboard';
-
-        }
+        else {
+           // return redirect()->route('package')->with('status','Welcome to your dashboard');
+         }
     }
     public function __construct()
     {

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ArchanaiController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\CheckoutController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\HomamController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\Web\StoreController;
 use App\Models\User;
 use App\Models\Vasthu;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -39,13 +41,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/check_query', function () {
-
-   // return ;
-    DB::enableQueryLog();
-    $user =  User::with(['subscription'])->find(1);
-    return $user->subscription->count();
-        //  return DB::getQueryLog();
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
 });
 
 
@@ -74,12 +71,13 @@ Route::get('/food-products',[HomeController::class,'food_products'])->name('food
 
 Route::get('/metal-fabrication-products',[HomeController::class,'metal_fabrication_products'])->name('metal.products');
 
-Route::get('/offers',[HomeController::class,'offers'])->name('offers');
+Route::get('/offers',[HomeController::class,'comming'])->name('offers');
 Route::get('/contact-us',[HomeController::class,'contact'])->name('contact');
 
  Route::get('/checkout/{id}/{slug}',[HomeController::class,'checkout'])->name('checkout');
  Route::post('/checkout',[HomeController::class,'checkout_post'])->name('checkout.post');
 
+ Route::post('/search',[HomeController::class,'search'])->name('search');
 
 
 
@@ -87,13 +85,13 @@ Route::get('/contact-us',[HomeController::class,'contact'])->name('contact');
 
 
 
-Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
-    Route::post('/ajaxRequest', [AjaxController::class, 'cars'])->name('ajaxRequest.post');
- Route::resource('dashboard', DashboardController::class, ['names' => 'dashboard']);
- Route::resource('booking', BookingController::class, ['names' => 'booking']);
+// Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
+//     Route::post('/ajaxRequest', [AjaxController::class, 'cars'])->name('ajaxRequest.post');
+//  Route::resource('dashboard', DashboardController::class, ['names' => 'dashboard']);
+//  Route::resource('booking', BookingController::class, ['names' => 'booking']);
 
 
-});
+// });
 // admin protected routes
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
  Route::resource('dashboard', AdminDashboardController::class,['names' => 'admin.dashboard']);
@@ -101,6 +99,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
  Route::resource('category', CategoryController::class,['names' => 'admin.category']);
  Route::resource('offers', OfferControlelr::class,['names' => 'admin.offers']);
  Route::resource('checkout', CheckoutController::class,['names' => 'admin.checkout']);
+ Route::resource('change-password', ChangePasswordController::class,['names' => 'admin.changepassword']);
+
 //  Route::resource('package', PackageController::class,['names' => 'admin.package']);
 //  Route::resource('plans', PlansController::class,['names' => 'admin.plans']);
 

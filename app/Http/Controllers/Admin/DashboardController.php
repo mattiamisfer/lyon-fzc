@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Checkout;
+use App\Models\Offer;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,8 +20,9 @@ class DashboardController extends Controller
         //
 
          
-
-        return view('backend.dashboard.index');
+            $offer = Offer::where('status','=','enable')->get();
+            $checkout = Checkout::all();
+        return view('backend.dashboard.index',compact('offer','checkout'));
     }
 
     /**
